@@ -1,0 +1,17 @@
+<?php
+$obm = \Magento\Framework\App\ObjectManager::getInstance();
+
+$customerSession = $obm->get('Magento\Customer\Model\Session');
+
+$hobbies = $customerSession->isLoggedIn() ? $customerSession->getCustomer()->getHobbies() : null;
+
+?>
+
+<div class="field hobbies">
+    <label class="label" for="hobbies">
+      <span><?= $block->escapeHtml(__('Hobbies')) ?></span>
+    </label>
+    <div class="control">
+       <input type="text" name="hobbies" id="hobbies" title="<?php $block->escapeHtml(__('Hobbies')) ?>" class="input-text" autocomplete="off" value="<?= $block->escapeHtml($hobbies)?>">
+    </div>
+</div>

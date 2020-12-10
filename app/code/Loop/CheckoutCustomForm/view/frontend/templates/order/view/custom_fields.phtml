@@ -1,0 +1,19 @@
+<?php
+/** @var Loop\CheckoutCustomForm\Block\Order\CustomFields $block */
+
+/** @var Loop\CheckoutCustomForm\Model\Data\CustomFields $customFields */
+$customFields = $block->getCustomFields($block->getOrder());
+?>
+<?php if($customFields): ?>
+    <div class="block block-order-details-view">
+        <div class="block-content">
+            <div class="box">
+                <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('Other information') ?></span></strong>
+                <div class="box-content">
+                    <strong><?php /* @escapeNotVerified */ echo __('Purpose') ?>:</strong>
+                    <?php echo $this->escapeHtml($customFields->getCheckoutPurpose()); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
